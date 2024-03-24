@@ -83,17 +83,16 @@ export async function POST(req : NextRequest){
         });
     }
     const {userId} = decryptData(encryptedData);
-    const ISTOffset = 5.5 * 60 * 60 * 1000; // Offset for Indian Standard Time (IST) in milliseconds
-    const currentTimeIST = new Date(Date.now() + ISTOffset);
-    const currentHourIST = currentTimeIST.getUTCHours();
+    const currentHour: number = new Date().getHours();
+    // 4,8,11,14,16
     // // console.log(body.userId);
     try {
-
-         if(currentHourIST>=19 && currentHourIST<20) {
+        // Switch based on time 
+        if(currentHour>=8 && currentHour<9) {
             await createFromTechJoke()
         }
 
-        else if(currentHourIST>=23 && currentHourIST<24){
+        else if(currentHour>=14 && currentHour<15){
            await createFromTechNews();
         }
 
