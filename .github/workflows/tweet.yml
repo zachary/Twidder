@@ -1,0 +1,16 @@
+name: Daily Tweet Scheduler
+
+on:
+  schedule:
+    - cron: '0 4,8,11,14,16 * * *' # Scheduled at 10am, 2pm, 5pm, 8pm, and 10pm IST
+
+jobs:
+  post-tweet:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Post Tweet
+        run: |
+          curl -X POST https://twidder.vercel.app/api/twitter \
+          -H "Content-Type: application/json" \
+          -d '{"encryptedData": "${{ secrets.TWITTER_API_SECRET }}"}'
