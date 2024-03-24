@@ -26,7 +26,7 @@ const page = () => {
         // if(email!=="thevinitgupta@gmail.com"){
         //     return alert("You are not Authorized!")
         // }
-        console.log(email,password)
+        // console.log(email,password)
         setLoading(true);
 
         try {

@@ -35,7 +35,7 @@ const page = () => {
             const client = getAppwriteClient();
            const account = new Account(client);
            await account.create(ID.unique(), email, password,username);
-           console.log("Account Created!")
+           // console.log("Account Created!")
            window.location.assign("/auth/login")
         } catch (error) {
             alert(error);

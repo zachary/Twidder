@@ -4,7 +4,7 @@ import { TwitterApi } from "twitter-api-v2";
 
 // Instantiate with desired auth type (here's Bearer v2 auth)
 const getTwitterClient = () => {
-    console.log("Hello")
+    // console.log("Hello")
     const apiKey : string = process.env.TWITTER_API_KEY || "";
     const consumer_secret : string = process.env.TWITTER_API_SECRET || "";
     const access_token : string = process.env.TWITTER_ACCESS_TOKEN || "";
@@ -45,7 +45,7 @@ const postTweet = async ({post} : {post : string}) => {
     return response.data;
 
    } catch (error) {
-    console.log(error)
+    // console.log(error)
     return error;
    }
 }

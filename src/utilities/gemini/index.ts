@@ -11,7 +11,7 @@ function getGeminiModel(geminiApiKey : string){
 
 async function convertToTweet(linkedInPost : string, geminiApiKey : string) {
    
-    console.log(geminiApiKey);
+    // console.log(geminiApiKey);
     const model = getGeminiModel(geminiApiKey);
 
   const prompt = "Analyze the provided text and generate 3 concise and engaging Twitter posts that capture the key points and essence of the content, suitable for Twitter's character limit (280 characters) and audience. Each tweet should be a complete thought and avoid cliffhangers. Maintain a consistent non-formal voice and tone throughout the tweets. Do not change the tone of the Post. DONT ADD ANY EXTRA TEXT LIKE TWEET 1, TWEET 2, etc. Just give 3 tweets, each separated by 2 newlines"
@@ -22,7 +22,7 @@ async function convertToTweet(linkedInPost : string, geminiApiKey : string) {
   const tweetSeparator = /\n\n/; // Two newlines for separation
 
 const tweets = tweet.split(tweetSeparator);
-  console.log(tweets);
+  // console.log(tweets);
   return tweets.join("|");
 }
 

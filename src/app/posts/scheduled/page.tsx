@@ -30,7 +30,7 @@ function page() {
             setAuthLoading(false);
             getPosts(session.$id);
         } catch (error) {
-            console.log("error getting user")
+            // console.log("error getting user")
             setAuthLoading(false);
             window.location.assign("/auth/login")
         }

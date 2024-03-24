@@ -1,5 +1,5 @@
 import { createDocument } from "@/utilities/appwrite";
-import convertToTweet from "@/utilities/gemini";
+import {convertToTweet} from "@/utilities/gemini";
 import { NextRequest } from "next/server";
 
 export interface GeminiBody {
@@ -8,7 +8,7 @@ export interface GeminiBody {
 
 export async function POST(req : NextRequest) {
     const request = await req.json();
-    console.log(request);
+    // console.log(request);
     const {linkedinPost} = request as GeminiBody;
     try {
         if(linkedinPost===null || linkedinPost.length===0) throw new Error("Please Add LinkedIn Post");
@@ -20,7 +20,7 @@ export async function POST(req : NextRequest) {
             statusText : "created"
         })
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         return new Response(error as string , {
             status : 500,
             statusText : "Something went wrong"

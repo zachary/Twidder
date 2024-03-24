@@ -30,7 +30,7 @@ function page() {
                 linkedinPost: post
             });
             const posts : Array<string> = data.split("|");
-            console.log(posts, typeof posts);
+            // console.log(posts, typeof posts);
             let docIds : Array<string> = [];
             posts.forEach(async (tweet) => {
                 const docId = await createDocument(tweet);
@@ -42,7 +42,7 @@ function page() {
 
             alert("Posts create : "+docIds.length)
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
 
         setLoading(false)
@@ -57,7 +57,7 @@ function page() {
             setUsername(session.name);
             setAuthLoading(false);
         } catch (error) {
-            console.log("error getting user")
+            // console.log("error getting user")
             setAuthLoading(false);
             window.location.assign("/auth/login")
         }

@@ -1,10 +1,10 @@
 import { Client, ID, Account, Databases, Permission, Role, Query } from "appwrite";
-import convertToTweet from "../gemini";
+import {convertToTweet} from "../gemini";
 
 const getAppwriteClient = () => {
     const appwriteEndpoint : string = process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT!;
     const appwriteProjectID : string = process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID!;
-    console.log(appwriteEndpoint,appwriteProjectID);
+    // console.log(appwriteEndpoint,appwriteProjectID);
     const client = new Client();
     client
         .setEndpoint(appwriteEndpoint)
@@ -32,7 +32,7 @@ const createDocument = async (tweet : string) : Promise<string> => {
         ]);
         return docRef.$id;
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         return "failed";
     }
     
@@ -51,11 +51,11 @@ const getDocuments = async (userId : string) => {
             Query.orderAsc("$createdAt")
         ]);
         const docs = new Array(...docsList.documents);
-        console.log(docs);
+        // console.log(docs);
         return docs;
     } catch (error) {
-        console.log(error);
-        console.log("Not fetched!")
+        // console.log(error);
+        // console.log("Not fetched!")
         return [];
     }
 }
@@ -71,11 +71,11 @@ const deletePost = async (postId : string) => {
 
         await db.deleteDocument(dbId, collectionId, postId);
         
-        console.log("Deleted!");
+        // console.log("Deleted!");
         return "success";
     } catch (error) {
-        console.log(error);
-        console.log("Not deleted!!")
+        // console.log(error);
+        // console.log("Not deleted!!")
         return "failed";
     }
 }

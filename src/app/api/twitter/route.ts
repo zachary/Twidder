@@ -38,11 +38,11 @@ const createFromUserPosts = async (userId : string) => {
         if(userDocuments.length===0) throw new Error("No Posts Scheduled!");
         const postToTweet = userDocuments[0];
         const response = await dummyPostTweet({post : postToTweet["post"]});
-        console.log(response);
+        // console.log(response);
         const appwriteApiKey = process.env.APPWRITE_API_KEY;
 
         if(!appwriteApiKey) throw new Error("Missing Admin Permissions");
-        console.log(appwriteApiKey);
+        // console.log(appwriteApiKey);
         const appwriteClient = await getAppwriteSDK();
         if(!appwriteClient) throw new Error("Appwrite Client Error!")
         const dbId : string = process.env.NEXT_PUBLIC_APPWRITE_DATABASE!;
@@ -58,7 +58,7 @@ const createFromTechJoke =async () => {
     if(!geminiApiKey) throw new Error("Missing Gemini Permission");
     const joke = await getTechJoke(geminiApiKey);
     const response = await dummyPostTweet({post : joke});
-    console.log(response);
+    // console.log(response);
 }
 
 const createFromTechNews =async () => {
@@ -66,13 +66,13 @@ const createFromTechNews =async () => {
     if(!geminiApiKey) throw new Error("Missing Gemini Permission");
     const joke = await getTechNews(geminiApiKey);
     const response = await dummyPostTweet({post : joke});
-    console.log(response);
+    // console.log(response);
 }
 
 
 export async function POST(req : NextRequest){
     const request = await req.json();
-    console.log(request);
+    // console.log(request);
     const {encryptedData} = request as TweetBody;
     if(!encryptedData) {
         return new Response("Invalid Request", {
@@ -84,7 +84,7 @@ export async function POST(req : NextRequest){
     }
     const {userId} = decryptData(encryptedData);
     const currentHour: number = new Date().getHours();
-    // console.log(body.userId);
+    // // console.log(body.userId);
     try {
         // Switch based on time 
         if((currentHour===10 && currentHour<11)|| (currentHour===17 && currentHour<18) || (currentHour===22 && currentHour<23)) {
@@ -111,7 +111,7 @@ export async function POST(req : NextRequest){
         });
       } catch (error) {
         // Handle errors
-        console.log('Error sending tweet:', error);
+        // console.log('Error sending tweet:', error);
         return new Response("Not Tweeted!!", {
             status : 500,
             headers : {
