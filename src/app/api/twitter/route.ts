@@ -83,24 +83,22 @@ export async function POST(req : NextRequest){
         });
     }
     const {userId} = decryptData(encryptedData);
-    const currentHour: number = new Date().getHours();
+    const ISTOffset = 5.5 * 60 * 60 * 1000; // Offset for Indian Standard Time (IST) in milliseconds
+    const currentTimeIST = new Date(Date.now() + ISTOffset);
+    const currentHourIST = currentTimeIST.getUTCHours();
     // // console.log(body.userId);
     try {
-        // Switch based on time 
-        if((currentHour===10 && currentHour<11)|| (currentHour===17 && currentHour<18) || (currentHour===22 && currentHour<23)) {
-            await createFromUserPosts(userId);
-        }
 
-        else if(currentHour===14 && currentHour<15) {
+         if(currentHourIST>=19 && currentHourIST<20) {
             await createFromTechJoke()
         }
 
-        else if(currentHour===20 && currentHour<21){
+        else if(currentHourIST>=23 && currentHourIST<24){
            await createFromTechNews();
         }
 
         else {
-            await createFromTechNews();
+            await createFromUserPosts(userId);
         }
         
         return new Response("Done!!", {
