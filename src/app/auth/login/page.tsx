@@ -33,7 +33,7 @@ const page = () => {
             const client = getAppwriteClient();
            const account = new Account(client);
            const session = await account.createEmailSession(email, password);
-           window.location.assign("posts/create")
+           window.location.assign("/posts/create")
         } catch (error) {
             alert(error);
         }
