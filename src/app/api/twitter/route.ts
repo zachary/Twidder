@@ -71,6 +71,7 @@ const createFromTechNews =async () => {
 
 
 export async function POST(req : NextRequest){
+    console.log("Twitter Post API Called at : ",new Date().getHours())
     const request = await req.json();
     // console.log(request);
     const {encryptedData} = request as TweetBody;
