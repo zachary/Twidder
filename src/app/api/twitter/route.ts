@@ -1,7 +1,7 @@
 import getAppwriteClient, { getDocuments } from "@/utilities/appwrite";
 import decryptData from "@/utilities/encryption/decrypt";
 import getTwitterClient, { postTweet } from "@/utilities/twitter";
-import AppwriteSDK from "node-appwrite"
+import AppwriteSDK, { ID } from "node-appwrite"
 import { NextRequest } from "next/server";
 import { getTechJoke, getTechNews } from "@/utilities/gemini";
 
@@ -69,6 +69,11 @@ const createFromTechNews =async () => {
     // console.log(response);
 }
 
+const checkIfUserAllowed = (userId : string) => {
+    const adminId = process.env.ADMIN_USER_ID;
+    return adminId===userId;
+}
+
 
 export async function POST(req : NextRequest){
     console.log("Twitter Post API Called at : ",new Date().getHours())
@@ -84,6 +89,7 @@ export async function POST(req : NextRequest){
         });
     }
     const {userId} = decryptData(encryptedData);
+    if(!checkIfUserAllowed(userId)) throw new Error("Invalid User")
     const currentHour: number = new Date().getHours();
     // 4,8,11,14,16
     // // console.log(body.userId);

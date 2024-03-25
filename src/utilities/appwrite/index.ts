@@ -25,10 +25,10 @@ const createDocument = async (tweet : string) : Promise<string> => {
             post: tweet,
             owner : user.$id
         }, [
-            Permission.write(Role.users()),
+            Permission.write(Role.users()), // only users can write to documents
             Permission.read(Role.any()),                  // Anyone can view this document
-            Permission.update(Role.user(user.$id)),      // Writers can update this document        // Admins can update this document
-            Permission.delete(Role.user(user.$id)), // User 5c1f88b42259e can delete this document       // Admins can delete this document
+            Permission.update(Role.user(user.$id)),      // Current user can only Update the Document
+            Permission.delete(Role.user(user.$id)),     // Current user can only Delete the Document
         ]);
         return docRef.$id;
     } catch (error) {
