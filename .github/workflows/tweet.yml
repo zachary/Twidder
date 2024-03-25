@@ -13,4 +13,4 @@ jobs:
         run: |
           curl -X POST https://twidder.vercel.app/api/twitter \
           -H "Content-Type: application/json" \
-          -d '{"encryptedData": "${{ secrets.TWITTER_API_SECRET }}"}'
+          -d '{"encryptedData": "${{ secrets.TWITTER_POSTER_KEY }}"}'
