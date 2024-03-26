@@ -46,7 +46,6 @@ function page() {
             {
                 loading ? <p>Loading posts...</p> : <Posts posts={posts}/>
             }
-
         </React.Fragment>
     );
 }
