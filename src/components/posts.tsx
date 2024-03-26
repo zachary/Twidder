@@ -27,10 +27,10 @@ function Posts({ posts }: PostsParams) {
     }
 
     return (
-        <div className={`w-full flex flex-col min-h-full items-center justify-around divide-y-2 divide-zinc-800 overflow-y-scroll`}>
+        <div className={`w-full flex flex-col h-full sm:h-[60vh] items-center gap-4 justify-around divide-y-2 divide-zinc-800 overflow-y-scroll`}>
             {
                 currentPosts.length>0 ? currentPosts.map((post, index) => {
-                    return <div key={post.$id} className={`w-full max-w-60 h-12 py-4 text-center flex justify-between items-center gap-5`}>
+                    return <div key={post.$id} className={`w-full max-w-60 h-20 py-4 text-center flex justify-between items-center gap-5`}>
                        <span className="text-wrap text-ellipsis">
                         {post.post.substring(0,40)+"..."}
                         </span>

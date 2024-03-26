@@ -44,7 +44,7 @@ const AuthLayout = ({
             <div className={`w-full h-full absolute z-2 bg-gradient-to-t from-transparent to-black/15`}>
             
             </div>
-            <section className={`h-[70vh] w-2/5 min-w-[480px] grid place-items-center place-content-center border rounded-lg border-zinc-500 relative bg-transparent backdrop-blur z-4 overflow-y-scroll`}>
+            <section className={`h-[90vh] sm:h-[70vh] w-2/5 min-w-[480px] grid place-items-center place-content-center border rounded-lg border-zinc-500 relative bg-transparent backdrop-blur z-4 overflow-y-scroll`}>
                 {children}
             </section>
         </main>
