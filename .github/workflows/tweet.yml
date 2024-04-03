@@ -11,6 +11,6 @@ jobs:
     steps:
       - name: Post Tweet
         run: |
-          curl -X POST https://twidder.vercel.app/api/twitter \
+          curl -X POST https://nexttwitterv3x.vercel.app/api/twitter \
           -H "Content-Type: application/json" \
           -d '{"encryptedData": "${{ secrets.TWITTER_POSTER_KEY }}"}'
