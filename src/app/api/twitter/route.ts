@@ -38,7 +38,7 @@ const createFromUserPosts = async (userId : string) => {
         if(userDocuments.length===0) throw new Error("No Posts Scheduled!");
         const postToTweet = userDocuments[0];
         const response = await postTweet({post : postToTweet["post"]});
-        // console.log(response);
+         console.log(response);
         const appwriteApiKey = process.env.APPWRITE_API_KEY;
 
         if(!appwriteApiKey) throw new Error("Missing Admin Permissions");
@@ -58,7 +58,7 @@ const createFromTechJoke =async () => {
     if(!geminiApiKey) throw new Error("Missing Gemini Permission");
     const joke = await getTechJoke(geminiApiKey);
     const response = await postTweet({post : joke});
-    // console.log(response);
+     console.log(response);
 }
 
 const createFromTechNews =async () => {
@@ -66,7 +66,7 @@ const createFromTechNews =async () => {
     if(!geminiApiKey) throw new Error("Missing Gemini Permission");
     const joke = await getTechNews(geminiApiKey);
     const response = await postTweet({post : joke});
-    // console.log(response);
+     console.log(response);
 }
 
 const checkIfUserAllowed = (userId : string) => {
@@ -78,7 +78,7 @@ const checkIfUserAllowed = (userId : string) => {
 export async function POST(req : NextRequest){
     console.log("Twitter Post API Called at : ",new Date().getHours())
     const request = await req.json();
-    // console.log(request);
+     console.log(request);
     const {encryptedData} = request as TweetBody;
     if(!encryptedData) {
         return new Response("Invalid Request", {
