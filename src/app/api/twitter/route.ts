@@ -118,7 +118,7 @@ export async function POST(req : NextRequest){
         });
       } catch (error) {
         // Handle errors
-        // console.log('Error sending tweet:', error);
+         console.log('Error sending tweet:', error);
         return new Response("Not Tweeted!!", {
             status : 500,
             headers : {
