@@ -37,6 +37,7 @@ const createFromUserPosts = async (userId : string) => {
         const userDocuments = await getDocuments(userId);
         if(userDocuments.length===0) throw new Error("No Posts Scheduled!");
         const postToTweet = userDocuments[0];
+         console.log(postToTweet);
         const response = await postTweet({post : postToTweet["post"]});
          console.log(response);
         const appwriteApiKey = process.env.APPWRITE_API_KEY;
@@ -57,6 +58,7 @@ const createFromTechJoke =async () => {
     const geminiApiKey = process.env.GEMINI_API_KEY;
     if(!geminiApiKey) throw new Error("Missing Gemini Permission");
     const joke = await getTechJoke(geminiApiKey);
+    console.log(joke);
     const response = await postTweet({post : joke});
      console.log(response);
 }
@@ -65,6 +67,7 @@ const createFromTechNews =async () => {
     const geminiApiKey = process.env.GEMINI_API_KEY;
     if(!geminiApiKey) throw new Error("Missing Gemini Permission");
     const joke = await getTechNews(geminiApiKey);
+     console.log(joke);
     const response = await postTweet({post : joke});
      console.log(response);
 }
