@@ -84,8 +84,8 @@ export async function POST(req: NextRequest) {
       headers: {},
     });
   }
-  const { userId } = decryptData(encryptedData);
-  if (!checkIfUserAllowed(userId)) throw new Error("Invalid User");
+  // const { userId } = decryptData(encryptedData);
+  // if (!checkIfUserAllowed(userId)) throw new Error("Invalid User");
   const currentHour: number = new Date().getHours();
   // 4,8,11,14,16
   // // console.log(body.userId);
@@ -96,7 +96,8 @@ export async function POST(req: NextRequest) {
     } else if (currentHour >= 14 && currentHour < 15) {
       await createFromTechNews();
     } else {
-      await createFromUserPosts(userId);
+      // await createFromUserPosts(userId);
+      await createFromUserPosts(encryptedData);
     }
 
     return new Response("Done!!", {
