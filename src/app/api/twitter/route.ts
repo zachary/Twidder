@@ -84,7 +84,7 @@ export async function POST(req: NextRequest) {
       headers: {},
     });
   }
-  const { userId } = decryptData(JSON.stringify({ encryptedData }));
+  const { userId } = decryptData(encryptedData);
   if (!checkIfUserAllowed(userId)) throw new Error("Invalid User");
   const currentHour: number = new Date().getHours();
   // 4,8,11,14,16
