@@ -2,7 +2,7 @@ name: Daily Tweet Scheduler
 
 on:
   schedule:
-    - cron: '0 4,8,11,14,16 * * *' # Scheduled at 10am, 2pm, 5pm, 8pm, and 10pm IST
+    - cron: '0 1,4,6,18,22 * * *' # Scheduled at 10am, 2pm, 5pm, 8pm, and 10pm PST
 
 jobs:
   post-tweet:
