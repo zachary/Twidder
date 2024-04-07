@@ -91,9 +91,9 @@ export async function POST(req: NextRequest) {
   // // console.log(body.userId);
   try {
     // Switch based on time
-    if (currentHour >= 8 && currentHour < 9) {
+    if (currentHour >= 4 && currentHour < 5) {
       await createFromTechJoke();
-    } else if (currentHour >= 14 && currentHour < 15) {
+    } else if (currentHour >= 18 && currentHour < 19) {
       await createFromTechNews();
     } else {
       // await createFromUserPosts(userId);
