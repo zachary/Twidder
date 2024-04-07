@@ -35,9 +35,9 @@ const createFromUserPosts = async (userId: string) => {
   const userDocuments = await getDocuments(userId);
   if (userDocuments.length === 0) throw new Error("No Posts Scheduled!");
   const postToTweet = userDocuments[0];
-  console.log(postToTweet);
+  //console.log(postToTweet);
   const response = await postTweet({ post: postToTweet["post"] });
-  console.log(response);
+  //console.log(response);
   const appwriteApiKey = process.env.APPWRITE_API_KEY;
 
   if (!appwriteApiKey) throw new Error("Missing Admin Permissions");
@@ -54,18 +54,18 @@ const createFromTechJoke = async () => {
   const geminiApiKey = process.env.GEMINI_API_KEY;
   if (!geminiApiKey) throw new Error("Missing Gemini Permission");
   const joke = await getTechJoke(geminiApiKey);
-  console.log(joke);
+  //console.log(joke);
   const response = await postTweet({ post: joke });
-  console.log(response);
+  //console.log(response);
 };
 
 const createFromTechNews = async () => {
   const geminiApiKey = process.env.GEMINI_API_KEY;
   if (!geminiApiKey) throw new Error("Missing Gemini Permission");
   const joke = await getTechNews(geminiApiKey);
-  console.log(joke);
+  //console.log(joke);
   const response = await postTweet({ post: joke });
-  console.log(response);
+  //console.log(response);
 };
 
 const checkIfUserAllowed = (userId: string) => {
@@ -76,7 +76,7 @@ const checkIfUserAllowed = (userId: string) => {
 export async function POST(req: NextRequest) {
   console.log("Twitter Post API Called at : ", new Date().getHours());
   const request = await req.json();
-  console.log(request);
+  //console.log(request);
   const { encryptedData } = request as TweetBody;
   if (!encryptedData) {
     return new Response("Invalid Request", {
@@ -91,6 +91,7 @@ export async function POST(req: NextRequest) {
   // // console.log(body.userId);
   try {
     // Switch based on time
+    console.log(currentHour);
     if (currentHour >= 4 && currentHour < 5) {
       await createFromTechJoke();
     } else if (currentHour >= 18 && currentHour < 19) {
